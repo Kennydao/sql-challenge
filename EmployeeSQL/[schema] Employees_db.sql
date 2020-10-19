@@ -1,4 +1,4 @@
--- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/7hPtMz
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
@@ -34,7 +34,10 @@ CREATE TABLE "employees" (
 
 CREATE TABLE "salaries" (
     "emp_no" int   NOT NULL,
-    "salary" int   NOT NULL
+    "salary" int   NOT NULL,
+    CONSTRAINT "pk_salaries" PRIMARY KEY (
+        "emp_no"
+     )
 );
 
 CREATE TABLE "dept_emp" (
@@ -67,7 +70,7 @@ REFERENCES "departments" ("dept_no");
 ALTER TABLE "dept_manager" ADD CONSTRAINT "fk_dept_manager_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
 
--- Adding concat key to dept_manager and dept_emp
+-- Adding composite key to dept_manager and dept_emp
 ALTER TABLE dept_manager
 ADD concat_no varchar(11);
 
@@ -79,4 +82,3 @@ ADD concat_no varchar(11);
 
 UPDATE dept_emp
 SET concat_no = CONCAT (dept_no, '_', emp_no);
-
