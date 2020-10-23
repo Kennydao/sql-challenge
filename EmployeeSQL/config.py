@@ -1,5 +1,5 @@
 # Username
-user = "Your username here!"
+username = "Your username here!"
 
 # Password
-pass = "Your password here"
+password = "Your password here!"
